@@ -1,0 +1,592 @@
+/* General Styles */
+:root {
+    --primary-color: #4CAF50; /* Strong Green */
+    --secondary-color: #E8F5E9; /* Light Green */
+    --text-color: #333;
+    --white-color: #fff;
+    --border-color: #ddd;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --light-gray: #f8f9fa;
+    --dark-green: #388E3C; /* Darker Green for hover */
+    --icon-bg-color: #e0f2f1; /* A very light teal/green for icon background */
+    --icon-border-color: #b2dfdb; /* A slightly darker border for icons */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--light-gray);
+    direction: rtl; /* Right-to-left for Arabic */
+    text-align: right; /* Align text to the right for Arabic */
+}
+
+/* Top Navigation Bar */
+.top-nav {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+.nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.nav-center {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.pharmacy-logo {
+    height: 40px;
+    filter: brightness(0) invert(1);
+}
+
+.cart-icon {
+    background: none;
+    border: none;
+    color: var(--white-color);
+    font-size: 1.6em;
+    cursor: pointer;
+    position: relative;
+    padding: 5px;
+}
+
+.cart-count {
+    background-color: #dc3545;
+    color: var(--white-color);
+    border-radius: 50%;
+    padding: 2px 7px;
+    font-size: 0.7em;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    display: none;
+}
+
+/* Search Section */
+.search-section {
+    background-color: var(--primary-color);
+    padding: 10px 20px 20px;
+}
+
+.search-bar {
+    background-color: var(--white-color);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    max-width: 900px;
+    margin: 0 auto;
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+.search-bar i {
+    color: #666;
+    margin-left: 10px;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    font-size: 1.1em;
+    padding: 5px 0;
+    text-align: right;
+}
+
+/* Main Content Area */
+.main-content {
+    padding: 20px;
+}
+
+/* Pharmacy Image Banner (Single Image) */
+.pharmacy-banner-container {
+    width: 100%;
+    height: 250px; /* Adjust height as needed for your image */
+    margin-bottom: 20px;
+    border-radius: 12px;
+    overflow: hidden; /* Ensure image corners are rounded */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--secondary-color); /* Fallback background */
+}
+
+.pharmacy-main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Image will cover the container, cropping if necessary */
+    display: block; /* Ensure it behaves as a block element */
+}
+
+
+/* Categories Section - ROUNDED TILES */
+.categories-section, .brands-section {
+    background-color: var(--white-color);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.categories-section h2, .brands-section h2 {
+    font-size: 1.6em;
+    color: var(--text-color);
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.view-all-link {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+}
+
+.view-all-link i {
+    margin-right: 5px;
+}
+
+.category-grid, .brand-grid {
+    display: grid;
+    /* Adjusted grid for 6 categories (3x2 or 2x3 responsive) */
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 15px;
+}
+
+.category-tile {
+    background-color: var(--white-color);
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 130px;
+}
+
+.category-tile:hover {
+    transform: translateY(-5px);
+}
+
+.tile-icon-wrapper {
+    width: 70px;
+    height: 70px;
+    background-color: var(--icon-bg-color);
+    border: 1px solid var(--icon-border-color);
+    border-radius: 18%; /* For a "squircle" shape, adjust as desired (50% for perfect circle) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.category-tile:hover .tile-icon-wrapper {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    border-color: var(--primary-color);
+}
+
+.tile-icon-wrapper img {
+    max-width: 70%;
+    max-height: 70%;
+    object-fit: contain;
+}
+
+.category-tile span {
+    font-size: 0.9em;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+/* Brand Tiles - Adjusted grid for 4 brands */
+.brand-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Adjusted min-width for 4 columns */
+    gap: 15px;
+}
+.brand-tile {
+    background-color: var(--white-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+}
+
+.brand-tile:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px var(--shadow-color);
+    border-color: var(--primary-color);
+}
+
+.brand-tile img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+/* Product Display Section */
+.products-display-section {
+    background-color: var(--white-color);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    margin-bottom: 20px;
+}
+
+.products-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.back-button {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.8em;
+    cursor: pointer;
+    margin-left: 15px;
+    transition: color 0.3s ease;
+}
+
+.back-button:hover {
+    color: var(--dark-green);
+}
+
+.products-header h2 {
+    color: var(--primary-color);
+    font-size: 1.8em;
+    flex-grow: 1;
+}
+
+.product-list-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+}
+
+.product-card {
+    background-color: var(--white-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-card img {
+    max-width: 100%;
+    height: 120px;
+    object-fit: contain;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.product-card h3 {
+    font-size: 1.1em;
+    color: var(--text-color);
+    margin-bottom: 5px;
+    height: 2.8em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.product-card p {
+    font-size: 0.8em;
+    color: #666;
+    margin-bottom: 8px;
+    flex-grow: 1;
+    height: 2.4em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.product-card .price {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.add-to-cart-btn {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.add-to-cart-btn:hover {
+    background-color: var(--dark-green);
+}
+
+/* Shopping Cart Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 25px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.close-button {
+    color: #aaa;
+    float: left;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--text-color);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.cart-items {
+    min-height: 50px;
+    margin-bottom: 15px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--light-gray);
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.cart-item-info {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.cart-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.cart-item-details {
+    flex-grow: 1;
+}
+
+.cart-item-details h4 {
+    margin: 0 0 5px 0;
+    color: var(--text-color);
+    font-size: 1em;
+}
+
+.cart-item-details p {
+    margin: 0;
+    font-size: 0.85em;
+    color: #555;
+}
+
+.cart-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.cart-item-quantity {
+    width: 50px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 0.9em;
+}
+
+.remove-from-cart-btn {
+    background-color: #dc3545;
+    color: var(--white-color);
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8em;
+    transition: background-color 0.3s ease;
+}
+
+.remove-from-cart-btn:hover {
+    background-color: #c82333;
+}
+
+#modal-empty-cart-message {
+    text-align: center;
+    color: #666;
+    padding: 20px;
+}
+
+.cart-summary {
+    text-align: left;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px dashed var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.cart-summary p {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.cart-summary .checkout-button {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.cart-summary .checkout-button:hover {
+    background-color: var(--dark-green);
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .pharmacy-banner-container {
+        height: 200px;
+    }
+    .category-grid {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    }
+    .category-tile {
+        height: 120px;
+    }
+    .tile-icon-wrapper {
+        width: 60px;
+        height: 60px;
+    }
+    .tile-icon-wrapper img {
+        max-width: 60%;
+        max-height: 60%;
+    }
+    .brand-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Adjust for 4 brands */
+    }
+    .product-list-container {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .pharmacy-banner-container {
+        height: 180px;
+        border-radius: 8px;
+    }
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr); /* Force 2 columns on very small screens */
+    }
+    .category-tile {
+        height: 110px;
+        padding: 5px;
+    }
+    .tile-icon-wrapper {
+        width: 50px;
+        height: 50px;
+        border-radius: 15%;
+    }
+    .tile-icon-wrapper img {
+        max-width: 50%;
+        max-height: 50%;
+    }
+    .brand-grid {
+        grid-template-columns: repeat(2, 1fr); /* Force 2 columns on very small screens for brands too */
+    }
+}
